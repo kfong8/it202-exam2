@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Exam 2</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+
+	<style>
+		.content {
+			margin: 1em;
+		}
+        .template{
+            display: none;
+        }
+	</style>
+
+</head>
+
+<body>
+
+
+  <div class="content" id="home">
+        <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Cras justo odio
+                        <span class="badge badge-primary badge-pill">14</span>
+                      </li>
+                     
+        </ul>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+
+            
+          $(document).ready(function() {
+
+            var url = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$select=department,count(department)&$group=department";
+            $.get(url, function(response){
+                var data = response;
+                $.each(data, function(i,v){
+                    var clone = $(".template").clone();
+                    clone.find(".list-group-item d-flex justify-content-between align-items-center").text(v.department);
+                    clone.find(".list-group-item d-flex justify-content-between align-items-center").addClass(v.results);
+                    clone.removeClass("template");
+                    $(".list-group").append($("<li>").v.department);
+                });
+            });
+            
+    
+          });
+        </script>
